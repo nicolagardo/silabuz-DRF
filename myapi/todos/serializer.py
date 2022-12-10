@@ -20,6 +20,23 @@ class TodoSerializer(serializers.ModelSerializer):
        'updated_at', 
        'deleted_at',
        )
+
+class TodoSerializer2(serializers.ModelSerializer):
+    class Meta:
+       model = Todo
+       fields = (
+        '__all__',
+       )
+       read_only_fields = (
+       'created_at', 
+    #    'done_at', 
+       'updated_at', 
+       'deleted_at',
+       )
+
+      
+    
+
     
 class TestTodoSerializer(serializers.Serializer):
     id = serializers.IntegerField()
@@ -30,15 +47,19 @@ class TestTodoSerializer(serializers.Serializer):
 
     def validate_title(self, value):
         if "$" in value:
-            raise serializers.ValidationError("Error, el título no puede tener el símbolo de $")
+            raise serializers.ValidationError(
+                "Error, el título no puede tener el símbolo de $")
         return value
 
     def validate_body(self, value):
         if "$" in value:
-            raise serializers.ValidationError("Error, el título no puede tener el símbolo de $")
+            raise serializers.ValidationError(
+                "Error, el título no puede tener el símbolo de $")
         return value
 
     def validate_body(self, value):
         if self.lista not in value:
             return value
-        raise serializers.ValidationError("Error, el título no puede tener el símbolo de &")
+        raise serializers.ValidationError(
+            "Error, el título no puede tener el símbolo de &")
+    

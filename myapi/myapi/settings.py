@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,7 +35,8 @@ LOLCAL_APPS = [
 ]
 THIRD_APPS = [
     "rest_framework",
-    "corsheaders"
+    "corsheaders",
+    'rest_framework_simplejwt',
 ]
 
 DJANGO_APPS = [
@@ -50,6 +52,13 @@ DJANGO_APPS = [
 INSTALLED_APPS = DJANGO_APPS + LOLCAL_APPS + THIRD_APPS
 
 # CORS_ALLOW_ALL_ORIGINS = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASS': (
+        'rest_framework_simplejwt.authentication.JwtAthentication'
+    )
+
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
