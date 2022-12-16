@@ -21,5 +21,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index),
     path("api", include('todos.urls')),
+    path("api/users", include('users.urls')),
 ]
 repo ="https://github.com/nicolagardo/silabuz-DRF.git"

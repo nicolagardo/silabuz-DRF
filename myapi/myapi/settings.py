@@ -33,12 +33,14 @@ ALLOWED_HOSTS = []
 
 # Application definition
 LOLCAL_APPS = [
-    "todos"
+    "todos",
+    "users"
 ]
 THIRD_APPS = [
     "rest_framework",
     "corsheaders",
     "rest_framework_simplejwt",
+    "rest_framework.authtoken"
 ]
 
 DJANGO_APPS = [
@@ -183,3 +185,5 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+
+AUTH_USER_MODEL = "users.User"
